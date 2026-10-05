@@ -1,5 +1,6 @@
 package com.example.beta_1_synkro.models;
 
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -39,8 +40,8 @@ public class Empresa {
 
 
     @OneToMany (mappedBy = "empresa")
-    @JsonManagedReference ("reto_usuario")
-    private list<Reto> retos;
+    @JsonManagedReference ("reto_empresa")
+    private List<Reto> retos;
 
     public UUID getId() {
         return id;

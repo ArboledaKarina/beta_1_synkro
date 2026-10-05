@@ -26,9 +26,9 @@ public class Categoria {
     @Column (name = "Descripcion",nullable = false, unique = true, length = 400)
     private String descripcion;
 
-    //@OneToMany (mappedBy = "categoria")
-    //@JsonManageReference ("reto_usuario")
-    // private list<Reto>retos;
+    @OneToMany (mappedBy = "categoria")
+    @JsonManageReference ("reto_usuario")
+    private list<Reto>retos;
 
     public UUID getId() {
         return id;
