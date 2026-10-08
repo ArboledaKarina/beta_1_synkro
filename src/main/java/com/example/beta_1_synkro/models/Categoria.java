@@ -28,7 +28,7 @@ public class Categoria {
 
     @OneToMany (mappedBy = "categoria")
     @JsonManageReference ("reto_usuario")
-     private list<Reto>retos;
+     private List<Reto>retos;
 
     public UUID getId() {
         return id;
