@@ -36,14 +36,15 @@ public class ServicioCategoria {
             Categoria categoriaEncontrada = categoriaBuscada.get();
 
             categoriaEncontrada.setNombre(datosNuevos.getNombre());
-            categoriaEncontrada.setContacto(datosNuevos.getContacto());
+            categoriaEncontrada.setCategoria(datosNuevos.getCategoria());
+            categoriaEncontrada.setDescripcion(datosNuevos.getDescripcion());
 
             return this.repositorioCategoria.save(categoriaEncontrada);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria no encontrada");
         }
     }
-
+    
     // Eliminar
     public boolean eliminar(UUID id) {
         Optional<Categoria> categoriaBuscada = this.repositorioCategoria.findById(id);

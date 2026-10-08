@@ -1,12 +1,16 @@
 package com.example.beta_1_synkro.models;
 
+import java.util.List;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity 
@@ -23,12 +27,12 @@ public class Categoria {
     @Column (name = "categoria", nullable = false , unique = true,length = 80)
     private String categoria;
 
-    @Column (name = "Descripcion",nullable = false, unique = true, length = 400)
+    @Column (name = "descripcion",nullable = false, unique = true, length = 400)
     private String descripcion;
 
     @OneToMany (mappedBy = "categoria")
-    @JsonManageReference ("reto_usuario")
-     private List<Reto>retos;
+    @JsonManagedReference("reto_categoria")
+    private List<Reto> retos;
 
     public UUID getId() {
         return id;
@@ -53,6 +57,12 @@ public class Categoria {
     }
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    public List<Reto> getRetos() {
+        return retos;
+    }
+    public void setRetos(List<Reto> retos) {
+        this.retos = retos;
     }
     
 }
