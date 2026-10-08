@@ -3,11 +3,14 @@ package com.example.beta_1_synkro.models;
 import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -90,6 +93,12 @@ public class Empresa {
     }
     public void setActiva(Boolean activa) {
         this.activa = activa;
-    }   
+    }
+    public List<Reto> getRetos() {
+        return retos;
+    }
+    public void setRetos(List<Reto> retos) {
+        this.retos = retos;
+    }
 
 }

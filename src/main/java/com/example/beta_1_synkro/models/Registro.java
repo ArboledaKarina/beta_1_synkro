@@ -1,6 +1,10 @@
-package com.example.BIZTRACK2.modelos;
+package com.example.beta_1_synkro.models;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,9 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "registros")
@@ -30,10 +31,11 @@ public class Registro {
     @Column(name = "estado")
     private String estado;
 
+    // Lado dueño de la relación con Reto (Reto.registros usa mappedBy = "reto")
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "id_reto")
     @JsonIgnore
-    private Usuario usuario;
+    private Reto reto;
 
     public Registro() {
     }
@@ -70,12 +72,11 @@ public class Registro {
         this.estado = estado;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Reto getReto() {
+        return reto;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setReto(Reto reto) {
+        this.reto = reto;
     }
 }
-
